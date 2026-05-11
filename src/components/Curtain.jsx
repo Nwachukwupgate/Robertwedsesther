@@ -145,36 +145,38 @@ export default function Curtain({ onOpen }) {
       </div>
 
       {/* Prompt */}
-      <div
-        className="absolute bottom-[13%] left-1/2 -translate-x-1/2 z-20 text-center pointer-events-none"
-        style={{ animation: "floatUp 2.8s ease-in-out infinite" }}
-      >
-        <span
-          className="font-script text-gold-lt block mb-4"
-          style={{
-            fontSize: "clamp(2.5rem, 7vw, 4.2rem)",
-            textShadow:
-              "0 2px 25px rgba(0,0,0,0.5), 0 0 50px rgba(201,168,76,0.25)",
-          }}
-        >
-          {COUPLE.groom} & {COUPLE.bride}
-        </span>
+      <div className="absolute bottom-[13%] inset-x-0 z-20 flex flex-col items-center text-center pointer-events-none px-4">
         <div
-          className="w-[100px] h-[100px] border border-gold rounded-full mx-auto mb-3.5 flex items-center justify-center relative"
-          style={{ animation: "glow 2.8s ease-in-out infinite" }}
+          className="flex flex-col items-center"
+          style={{ animation: "floatUp 2.8s ease-in-out infinite" }}
         >
           <span
-            className="absolute -inset-2 border rounded-full"
-            style={{ borderColor: "rgba(201,168,76,0.25)" }}
-          />
-          <span className="text-[2.2rem]">💍</span>
+            className="font-script text-gold-lt block mb-4"
+            style={{
+              fontSize: "clamp(2.5rem, 7vw, 4.2rem)",
+              textShadow:
+                "0 2px 25px rgba(0,0,0,0.5), 0 0 50px rgba(201,168,76,0.25)",
+            }}
+          >
+            {COUPLE.groom} & {COUPLE.bride}
+          </span>
+          <div
+            className="w-[100px] h-[100px] border border-gold rounded-full mb-3.5 flex items-center justify-center relative"
+            style={{ animation: "glow 2.8s ease-in-out infinite" }}
+          >
+            <span
+              className="absolute -inset-2 border rounded-full"
+              style={{ borderColor: "rgba(201,168,76,0.25)" }}
+            />
+            <span className="text-[2.2rem]">💍</span>
+          </div>
+          <p
+            className="font-cinzel text-[0.6rem] tracking-[0.55em] text-gold-lt uppercase"
+            style={{ textShadow: "0 2px 8px rgba(0,0,0,0.5)" }}
+          >
+            Touch to Enter
+          </p>
         </div>
-        <p
-          className="font-cinzel text-[0.6rem] tracking-[0.55em] text-gold-lt uppercase"
-          style={{ textShadow: "0 2px 8px rgba(0,0,0,0.5)" }}
-        >
-          Touch to Enter
-        </p>
       </div>
     </div>
   );
