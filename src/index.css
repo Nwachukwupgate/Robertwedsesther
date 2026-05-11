@@ -1,0 +1,430 @@
+@import "tailwindcss";
+
+@theme {
+  --color-velvet: #6B0014;
+  --color-crimson: #8B0020;
+  --color-burgundy: #4A000C;
+  --color-gold: #C9A84C;
+  --color-gold-lt: #E8CC7A;
+  --color-gold-dk: #9A7A2A;
+  --color-ivory: #FAF3E5;
+  --color-cream: #F4E8D4;
+  --color-parchment: #EDD9B8;
+  --color-charcoal: #1C0A0A;
+  --color-muted: #7A5F52;
+
+  --font-serif: "EB Garamond", Georgia, serif;
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-script: "Great Vibes", cursive;
+  --font-cinzel: "Cinzel", serif;
+
+  --animate-float-up: floatUp 2.8s ease-in-out infinite;
+  --animate-glow: glow 2.8s ease-in-out infinite;
+  --animate-scroll-anim: scrollAnim 2s ease-in-out infinite;
+  --animate-blink: blink 1s step-end infinite;
+  --animate-petal-drop: petalDrop linear forwards;
+}
+
+/* ─────────── Base ─────────── */
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background: var(--color-ivory);
+  color: var(--color-charcoal);
+  font-family: var(--font-serif);
+  overflow-x: hidden;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* ─────────── Keyframes ─────────── */
+@keyframes floatUp {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-12px);
+  }
+}
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 20px rgba(201, 168, 76, 0.25),
+      inset 0 0 10px rgba(201, 168, 76, 0.08);
+  }
+  50% {
+    box-shadow:
+      0 0 55px rgba(201, 168, 76, 0.55),
+      inset 0 0 25px rgba(201, 168, 76, 0.18);
+  }
+}
+@keyframes scrollAnim {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  50% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  51% {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+@keyframes petalDrop {
+  0% {
+    transform: translateY(-50px) translateX(0) rotate(0deg);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(110vh) translateX(calc(var(--dx) * 45px)) rotate(500deg);
+    opacity: 0;
+  }
+}
+
+/* ─────────── Reusable Patterns ─────────── */
+.fabric-left {
+  background:
+    repeating-linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0) 0px,
+      rgba(255, 255, 255, 0.012) 2px,
+      rgba(0, 0, 0, 0.035) 4px,
+      rgba(255, 255, 255, 0) 6px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0) 0px,
+      rgba(0, 0, 0, 0.055) 16px,
+      rgba(255, 255, 255, 0.035) 20px,
+      rgba(0, 0, 0, 0) 32px
+    ),
+    linear-gradient(
+      108deg,
+      #b01525 0%,
+      #8b0020 25%,
+      #6b0014 55%,
+      #4a000c 80%,
+      #3a0008 100%
+    );
+}
+.fabric-right {
+  background:
+    repeating-linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0) 0px,
+      rgba(255, 255, 255, 0.012) 2px,
+      rgba(0, 0, 0, 0.035) 4px,
+      rgba(255, 255, 255, 0) 6px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0) 0px,
+      rgba(0, 0, 0, 0.055) 16px,
+      rgba(255, 255, 255, 0.035) 20px,
+      rgba(0, 0, 0, 0) 32px
+    ),
+    linear-gradient(
+      252deg,
+      #b01525 0%,
+      #8b0020 25%,
+      #6b0014 55%,
+      #4a000c 80%,
+      #3a0008 100%
+    );
+}
+.valance-bg {
+  background: linear-gradient(180deg, #2a0006 0%, #6b0014 65%, #5c0011 100%);
+}
+.valance-center-bg {
+  background: linear-gradient(180deg, #3a0008, #2a0006);
+}
+.tassel-ball-bg {
+  background: radial-gradient(
+    circle at 38% 35%,
+    var(--color-gold-lt),
+    var(--color-gold),
+    var(--color-gold-dk)
+  );
+}
+.tassel-cord-bg {
+  background: linear-gradient(
+    180deg,
+    var(--color-gold),
+    var(--color-gold-dk) 70%,
+    transparent
+  );
+}
+.tassel-end-bg {
+  background: radial-gradient(
+    ellipse at 40% 30%,
+    var(--color-gold-lt),
+    var(--color-gold-dk)
+  );
+}
+.fringe-bg {
+  background: linear-gradient(
+    180deg,
+    var(--color-gold-lt) 0%,
+    var(--color-gold) 50%,
+    var(--color-gold-dk) 80%,
+    transparent 100%
+  );
+}
+.trim-bg {
+  background: linear-gradient(
+    90deg,
+    #9a7a2a,
+    var(--color-gold-lt),
+    var(--color-gold),
+    #9a7a2a
+  );
+  box-shadow: 0 0 22px rgba(201, 168, 76, 0.45);
+}
+
+/* Hero overlay & countdown background */
+.hero-veil-bg {
+  background:
+    radial-gradient(
+      ellipse at center,
+      transparent 20%,
+      rgba(15, 0, 4, 0.55) 100%
+    ),
+    linear-gradient(
+      0deg,
+      rgba(15, 0, 4, 0.72) 0%,
+      transparent 55%,
+      rgba(15, 0, 4, 0.38) 100%
+    );
+}
+.countdown-bg {
+  background:
+    radial-gradient(
+      ellipse at 50% 120%,
+      rgba(201, 168, 76, 0.08) 0%,
+      transparent 65%
+    ),
+    linear-gradient(
+      140deg,
+      #150305 0%,
+      var(--color-burgundy) 35%,
+      var(--color-velvet) 65%,
+      #200408 100%
+    );
+}
+.det-photo-veil-bg {
+  background: linear-gradient(
+    0deg,
+    rgba(15, 0, 4, 0.78) 0%,
+    transparent 58%
+  );
+}
+.feat-veil-bg {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(15, 0, 4, 0.28) 0%,
+    rgba(15, 0, 4, 0.6) 100%
+  );
+}
+.m-veil-bg {
+  background: linear-gradient(
+    0deg,
+    rgba(75, 0, 15, 0.68) 0%,
+    transparent 52%
+  );
+}
+
+/* Gradient-line ornaments */
+.orn-line-l {
+  background: linear-gradient(90deg, transparent, var(--color-gold));
+}
+.orn-line-r {
+  background: linear-gradient(270deg, transparent, var(--color-gold));
+}
+.divider-line {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-gold),
+    transparent
+  );
+}
+.divider-line-v {
+  background: linear-gradient(
+    180deg,
+    transparent,
+    var(--color-gold) 8%,
+    var(--color-gold) 92%,
+    transparent
+  );
+}
+.scroll-grad {
+  background: linear-gradient(
+    180deg,
+    transparent,
+    var(--color-gold-lt),
+    transparent
+  );
+}
+.cd-num-rule::after {
+  content: "";
+  display: block;
+  width: 65%;
+  margin: 8px auto 7px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-gold),
+    transparent
+  );
+}
+
+/* RSVP button */
+.rsvp-btn-bg {
+  background: linear-gradient(
+    135deg,
+    var(--color-velvet),
+    var(--color-burgundy)
+  );
+}
+.rsvp-btn-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    transparent 50%,
+    rgba(255, 255, 255, 0.055)
+  );
+}
+
+/* Reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.88s ease,
+    transform 0.88s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+.d1 {
+  transition-delay: 0.14s;
+}
+.d2 {
+  transition-delay: 0.28s;
+}
+.d3 {
+  transition-delay: 0.42s;
+}
+
+/* Hero content fade */
+.hero-cnt {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 1.1s ease 0.2s,
+    transform 1.1s ease 0.2s;
+}
+.hero-cnt.show {
+  opacity: 1;
+  transform: none;
+}
+.hero-scroll {
+  opacity: 0;
+  transition: opacity 1s ease 1.2s;
+}
+.hero-scroll.show {
+  opacity: 0.6;
+}
+
+/* Hero background scale-in */
+#hero-bg {
+  transform: scale(1.06);
+  transition: transform 9s ease;
+}
+.hero-loaded #hero-bg {
+  transform: scale(1);
+}
+
+/* Curtain sweep */
+.panel-left,
+.panel-right {
+  transition: transform 2.2s cubic-bezier(0.86, 0, 0.07, 1);
+}
+.stage-swept .panel-left {
+  transform: translateX(-100%);
+}
+.stage-swept .panel-right {
+  transform: translateX(100%);
+}
+.stage {
+  transition: opacity 0.8s ease 2.2s;
+}
+.stage-swept {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Timeline */
+.timeline-line::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    var(--color-gold) 8%,
+    var(--color-gold) 92%,
+    transparent
+  );
+  transform: translateX(-50%);
+}
+.chap {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.82s ease,
+    transform 0.82s ease;
+}
+.chap.visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 720px) {
+  .timeline-line::before {
+    left: 22px;
+  }
+}
+
+/* Petals */
+.petal {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9000;
+  opacity: 0;
+  animation: petalDrop linear forwards;
+  border-radius: 60% 40% 60% 40%;
+}
